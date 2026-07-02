@@ -138,30 +138,34 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
 
-                    // check whether geoip / geosite database is downloaded
+                    // check whether geoip / geosite / rules database is downloaded
                     try {
-                        boolean geoip = false;
+                        boolean dlc = false;
                         boolean geosite = false;
+                        boolean rules = false;
                         List<RoutingRule> routingRules = Rules.readRules(getFilesDir());
                         for (RoutingRule routingRule : routingRules) {
                             for (String s : routingRule.ip) {
-                                if (s.startsWith("geoip:")) {
-                                    geoip = true;
-                                }
+                                //if (s.startsWith("geoip:")) {
+                                //    geoip = true;
+                                //}
                                 if (s.startsWith("geosite:")) {
                                     geosite = true;
                                 }
                             }
                             for (String s : routingRule.domain) {
-                                if (s.startsWith("geoip:")) {
-                                    geoip = true;
-                                }
+                                //if (s.startsWith("geoip:")) {
+                                //    geoip = true;
+                                //}
                                 if (s.startsWith("geosite:")) {
                                     geosite = true;
                                 }
                             }
                         }
-                        if ((geoip && !new File(getFilesDir(), "geoip.dat").isFile()) || (geosite && !new File(getFilesDir(), "geosite.dat").isFile())) {
+
+                        //if ((geoip && !new File(getFilesDir(), "geoip.dat").isFile()) || (geosite && !new File(getFilesDir(), "geosite.dat").isFile())) {
+                        if ((dlc && !new File(getFilesDir(), "dlc.dat").isFile()) || (geosite && !new File(getFilesDir(), "geosite.dat").isFile())) {
+
                             // ask the user to download geoip / geosite database
                             new AlertDialog.Builder(MainActivity.this)
                                     .setTitle(R.string.warning)
@@ -172,6 +176,20 @@ public class MainActivity extends AppCompatActivity {
                                     .show();
                             button.setChecked(false);
                             return;
+                                                      
+                        }
+                        if ((rules && !new File(getFilesDir(), "rules.json").isFile())) {
+                            // ask the user to download rules database
+                            new AlertDialog.Builder(MainActivity.this)
+                                    .setTitle(R.string.warning)
+                                    .setMessage(R.string.geoip_not_downloaded)
+                                    .setPositiveButton(R.string.download, (dialog, which) -> {
+                                        startActivity(new Intent(MainActivity.this, GeoAssetsActivity.class));
+                                    })
+                                    .show();
+                            button.setChecked(false);
+                            return;
+                                                      
                         }
                     } catch (IOException e) {
                         Log.e("MainActivity", "read rules", e);
@@ -302,7 +320,7 @@ public class MainActivity extends AppCompatActivity {
 
         // catch all
         SharedPreferences sp = getSharedPreferences("XIVPN", Context.MODE_PRIVATE);
-        String selectedLabel = sp.getString("SELECTED_LABEL", "No Proxy (Bypass Mode)");
+        String selectedLabel = sp.getString("SELECTED_LABEL", "Direct");
         String selectedSubscription = sp.getString("SELECTED_SUBSCRIPTION", "none");
         recurseUsedProxyGroups(new LabelSubscription(selectedLabel, selectedSubscription), proxies, visited);
 
@@ -374,6 +392,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
 }

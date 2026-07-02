@@ -66,6 +66,7 @@
     <string name="geoip">Geoip</string>
     <string name="geosite">Geosite</string>
     <string name="v2fly_dlc">v2fly/domain-list-community</string>
+    <string name="dlc">dlc</string>
     <string name="custom_geosite_hint">Enter the URL for custom geoip file</string>
     <string name="downloading_geo_assets">Downloading geo assets…</string>
     <string name="downloading_error">Download error</string>
@@ -147,7 +148,7 @@
     <string name="discard_changes">Discard changes</string>
     <string name="ipv6">IPv6</string>
     <string name="ipv6_summary">Add IPv6 address and route to VPN network interface.</string>
-    <string name="geoip_geosite_summary">Download GEOIP / GEOSITE database</string>
+    <string name="geoip_geosite_summary"></string>
     <string name="subscription_no_verify">Ignore certificate verification</string>
     <string name="subscription_no_verify_summary">Disable SSL certificate verification when updating subscriptions (insecure!)</string>
     <string name="click_for_details">Click for details</string>
@@ -159,6 +160,7 @@
     <string name="applications">Applications</string>
     <string name="rule_app_help">Match traffic by originating app</string>
     <string name="already_updating_geo_assets">A background task downloading geo databases is currently running.</string>
+    <string name="already_updating_rules_assets">A background task downloading rules is currently running.</string>
     <string name="not_found">Not found</string>
     <string name="downloading">Downloading</string>
     <string name="download_success">Downloaded successfully</string>

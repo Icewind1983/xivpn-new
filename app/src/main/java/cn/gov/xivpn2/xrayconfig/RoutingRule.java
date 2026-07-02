@@ -1,6 +1,7 @@
 package cn.gov.xivpn2.xrayconfig;
 
 import java.util.List;
+import java.util.Map;
 
 public class RoutingRule {
     public String type = "field";
@@ -16,4 +17,9 @@ public class RoutingRule {
     public String outboundSubscription;
     public String outboundLabel;
     public String label;
+    public String sniffedTag;
+    //public Map<String, List<String>> dns;
+    //public String action;
+    
+    //public Boolean blockAds = false;
 }

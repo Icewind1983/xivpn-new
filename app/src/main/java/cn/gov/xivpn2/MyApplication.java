@@ -35,6 +35,12 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        
+        // Планируем ежедневную загрузку при запуске приложения
+        DownloadManager.scheduleDailyDownloadAt1000(this);
+        
+        // Загрузить rules.json при запуске приложения
+        //DownloadManager.downloadRulesOnStartup(this);
 
         // crash
         Thread.setDefaultUncaughtExceptionHandler((thread, throwable) -> {
@@ -100,6 +106,8 @@ public class MyApplication extends Application {
         // copy assets
         writeAsset("default_rules.json", new File(getFilesDir(), "rules.json"));
         writeAsset("default_dns.json", new File(getFilesDir(), "dns.json"));
+        writeAsset("default_dlc.dat", new File(getFilesDir(), "dlc.dat"));
+        writeAsset("default_geosite.dat", new File(getFilesDir(), "geosite.dat"));
     }
 
     private void writeAsset(String asset, File out) {

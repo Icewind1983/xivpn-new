@@ -19,95 +19,147 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
 
                 <TextView
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     android:id="@+id/geoip_name"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-                    android:text="geoip.dat"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    app:layout_constraintTop_toBottomOf="@+id/geoip_name"
+                    android:layout_height="wrap_content"
+                    android:text="dlc.dat"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:id="@+id/geoip_size"
-                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-                    android:text="10 MB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    app:layout_constraintStart_toEndOf="@+id/geoip_size"
-                    app:layout_constraintTop_toBottomOf="@id/geoip_name"
-                    android:id="@+id/geoip_date"
-                    android:layout_marginStart="6dp"
-                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-                    android:text="2 days ago"
+                    android:id="@+id/geoip_size"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="1 KB"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/geoip_name" />
+
+                <TextView
+                    android:id="@+id/geoip_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="2 days ago"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    app:layout_constraintStart_toEndOf="@+id/geoip_size"
+                    app:layout_constraintTop_toBottomOf="@id/geoip_name" />
 
                 <com.google.android.material.button.MaterialButton
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
                     android:id="@+id/geoip_download"
+                    style="?attr/materialIconButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    style="?attr/materialIconButtonStyle"
-                    app:icon="@drawable/baseline_download_24" />
+                    app:icon="@drawable/baseline_download_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.divider.MaterialDivider
-                android:layout_marginVertical="6dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="6dp" />
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
 
                 <TextView
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     android:id="@+id/geosite_name"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-                    android:text="geosite.dat"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    app:layout_constraintTop_toBottomOf="@+id/geosite_name"
+                    android:layout_height="wrap_content"
+                    android:text="geosite.dat"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:id="@+id/geosite_size"
-                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-                    android:text="10 MB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    app:layout_constraintStart_toEndOf="@+id/geosite_size"
-                    app:layout_constraintTop_toBottomOf="@id/geosite_name"
-                    android:id="@+id/geosite_date"
-                    android:layout_marginStart="6dp"
-                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-                    android:text="2 days ago"
+                    android:id="@+id/geosite_size"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="10 MB"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/geosite_name" />
+
+                <TextView
+                    android:id="@+id/geosite_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="2 days ago"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    app:layout_constraintStart_toEndOf="@+id/geosite_size"
+                    app:layout_constraintTop_toBottomOf="@id/geosite_name" />
 
                 <com.google.android.material.button.MaterialButton
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
                     android:id="@+id/geosite_download"
+                    style="?attr/materialIconButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
+                    app:icon="@drawable/baseline_download_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="6dp" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/rules_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="rules.json"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/rules_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10 MB"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rules_name" />
+
+                <TextView
+                    android:id="@+id/rules_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="2 days ago"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    app:layout_constraintStart_toEndOf="@+id/rules_size"
+                    app:layout_constraintTop_toBottomOf="@id/rules_name" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/rules_download"
                     style="?attr/materialIconButtonStyle"
-                    app:icon="@drawable/baseline_download_24" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    app:icon="@drawable/baseline_download_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -636,7 +636,7 @@ public class XiVPNService extends VpnService implements SocketProtect {
             Intent intent = new Intent(this, CrashLogActivity.class);
             intent.putExtra("FILE", "crash_" + datetime + ".txt");
 
-            Notification notification = new Notification.Builder(this, "XiVPNService").setContentTitle(getString(R.string.vpn_process_crashed)).setContentText(getString(R.string.click_to_open_crash_log)).setSmallIcon(R.drawable.baseline_error_24).setContentIntent(PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE)).build();
+            Notification notification = new Notification.Builder(this, "XiVPNService").setContentTitle(getString(R.string.vpn_process_crashed)).setContentText(getString(R.string.click_to_open_crash_log)).setContentIntent(PendingIntent.getActivity(this, 21, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE)).setAutoCancel(true).setSmallIcon(R.drawable.baseline_vpn_key_24).build();
             getSystemService(NotificationManager.class).notify(NotificationID.getID(), notification);
         }
     }
@@ -768,7 +768,7 @@ public class XiVPNService extends VpnService implements SocketProtect {
                 // Consequently, we can reject all connections for which we could not retrieve
                 // the owner UID, as they are not intended to be proxied by Xi VPN anyway.
                 //
-                // See https://cs.android.com/android/platform/superproject/+/android-latest-release:packages/modules/Connectivity/service/src/com/android/server/ConnectivityService.java;drc=c4fea9d31ce3a97a0b87e7fb69835e100bb27e89;l=13764
+                // See https://cs.android.com/android/platform/superproject/+/android-latest-release:packages/modules/Connectivity/service/src/com/android/server/ConnectivityService.java;drc=c4fe...
 
                 RoutingRule leakProtectionRule = new RoutingRule();
                 leakProtectionRule.process = List.of("-1");
@@ -778,7 +778,7 @@ public class XiVPNService extends VpnService implements SocketProtect {
                     leakProtectionRule.outboundLabel = "Block";
                     leakProtectionRule.outboundSubscription = "none";
                 } if ("Direct".equals(leakProtectionMode)) {
-                    leakProtectionRule.outboundLabel = "No Proxy (Bypass Mode)";
+                    leakProtectionRule.outboundLabel = "Direct";
                     leakProtectionRule.outboundSubscription = "none";
                 }
 
@@ -830,7 +830,7 @@ public class XiVPNService extends VpnService implements SocketProtect {
 
             // catch all
             SharedPreferences sp = getSharedPreferences("XIVPN", Context.MODE_PRIVATE);
-            String selectedLabel = sp.getString("SELECTED_LABEL", "No Proxy (Bypass Mode)");
+            String selectedLabel = sp.getString("SELECTED_LABEL", "Direct");
             String selectedSubscription = sp.getString("SELECTED_SUBSCRIPTION", "none");
             Proxy catchAll = AppDatabase.getInstance().proxyDao().find(selectedLabel, selectedSubscription);
 
@@ -933,8 +933,9 @@ public class XiVPNService extends VpnService implements SocketProtect {
                     }
 
                     JsonArray newRules = new JsonArray();
-                    if (!catchAllSubscription.ignoreRoutingDns) newRules.addAll(configJsonObject.getAsJsonObject("routing").getAsJsonArray("rules"));
+                    // App routing rules get priority - added first
                     newRules.addAll(xRouting.getAsJsonArray("rules"));
+                    if (!catchAllSubscription.ignoreRoutingDns) newRules.addAll(configJsonObject.getAsJsonObject("routing").getAsJsonArray("rules"));
                     xRouting.remove("rules");
                     xRouting.add("rules", newRules);
 

@@ -8,5 +8,5 @@ import java.util.Map;
 public class XrayDNS {
     public Map<String, String> hosts = new HashMap<>();
     public List<DNSServer> servers = new ArrayList<>();
-    public boolean disableFallbackIfMatch = true;
+    public boolean disableFallbackIfMatch = false;
 }

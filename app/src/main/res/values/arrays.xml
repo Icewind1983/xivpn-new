@@ -24,22 +24,14 @@
         <item>A</item>
         <item>AAAA</item>
     </string-array>
-    <string-array name="geoip">
-        <item>v2fly/geoip</item>
-        <item>v2fly/geoip CN</item>
-        <item>Exclude0122/geoip</item>
-        <item>Exclude0122/geoip CN</item>
-        <item>Exclude0122/geoip RU</item>
-        <item>Exclude0122/geoip IR</item>
-        <item>Exclude0122/geoip KP</item>
-        <item>runetfreedom/russia-v2ray-rules-dat</item>
+    <string-array name="dlc">
+        <item>russia-direct-and-ads-rules-dat</item>
     </string-array>
     <string-array name="geosite">
-        <item>v2fly/domain-list-community</item>
-        <item>Loyalsoldier/v2ray-rules-dat</item>
-        <item>chocolate4u/Iran-v2ray-rules</item>
-        <item>chocolate4u/Iran-v2ray-rules geosite-lite</item>
-        <item>runetfreedom/russia-v2ray-rules-dat</item>
+        <item>russia-v2ray-rules-dat</item>
+    </string-array>
+    <string-array name="rules">
+        <item>routing-rules</item>
     </string-array>
     <string-array name="donation">
         <item>Tron / USDT TRC20</item>

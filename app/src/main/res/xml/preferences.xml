@@ -10,7 +10,7 @@
             android:entries="@array/log_levels"
             android:entryValues="@array/log_levels"
             android:title="@string/log_level"
-            app:defaultValue="warning"
+            app:defaultValue="error"
             app:iconSpaceReserved="false"
             app:key="log_level"
             app:singleLineTitle="true" />
@@ -39,13 +39,13 @@
         <Preference
             android:title="@string/geoip_geosite"
             app:iconSpaceReserved="false"
-            app:summary="@string/geoip_geosite_summary"
-            app:key="geoip_geosite" />
+            app:key="geoip_geosite"
+            app:summary="@string/geoip_geosite_summary" />
 
 
         <CheckBoxPreference
             android:title="@string/ipv6"
-            app:defaultValue="false"
+            app:defaultValue="true"
             app:iconSpaceReserved="false"
             app:key="ipv6"
             app:summary="@string/ipv6_summary" />
@@ -72,7 +72,7 @@
 
 
         <ListPreference
-            android:defaultValue="Disabled"
+            android:defaultValue="Block"
             android:entries="@array/leak_protection_modes"
             android:entryValues="@array/leak_protection_modes_value"
             android:title="@string/leak_protection"
@@ -120,35 +120,6 @@
             app:iconSpaceReserved="false"
             app:key="app_version"
             app:summary="" />
-
-        <Preference
-            app:iconSpaceReserved="false"
-            app:key="privacy_policy"
-            app:title="@string/privacy_policy" />
-
-        <Preference
-            app:iconSpaceReserved="false"
-            app:key="feedback"
-            app:summary="@string/feedback_summary"
-            app:title="@string/feedback" />
-
-        <Preference
-            app:iconSpaceReserved="false"
-            app:key="source_code"
-            app:summary="@string/source_code_summary"
-            app:title="@string/source_code" />
-
-        <Preference
-            app:iconSpaceReserved="false"
-            app:key="open_source_licenses"
-            app:title="@string/open_source_licenses" />
-
-        <Preference
-            app:iconSpaceReserved="false"
-            android:title="@string/donation"
-            app:key="donation"
-            app:summary="@string/donation_summary" />
-
 
     </PreferenceCategory>
 

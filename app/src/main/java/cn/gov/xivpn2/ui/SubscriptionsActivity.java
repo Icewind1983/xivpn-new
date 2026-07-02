@@ -111,7 +111,7 @@ public class SubscriptionsActivity extends AppCompatActivity {
                         Subscription subscription = new Subscription();
                         subscription.label = labelEditText.getText().toString();
                         subscription.url = urlEditText.getText().toString();
-                        subscription.autoUpdate = 180;
+                        subscription.autoUpdate = 720;
                         subscription.type = type.getText().toString().equals(getResources().getStringArray(R.array.subscription_types)[0]) ? "v2rayng" : "xray-json";
                         subscription.ignoreRoutingDns = ignoreRoutingDns.isChecked();
                         AppDatabase.getInstance().subscriptionDao().insert(subscription);

@@ -222,7 +222,7 @@ public class ProxiesActivity extends AppCompatActivity {
 
         SharedPreferences sp = getSharedPreferences("XIVPN", MODE_PRIVATE);
         adapter.setChecked(
-                sp.getString("SELECTED_LABEL", "No Proxy (Bypass Mode)"),
+                sp.getString("SELECTED_LABEL", "Direct"),
                 sp.getString("SELECTED_SUBSCRIPTION", "none")
         );
 

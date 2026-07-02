@@ -58,71 +58,39 @@ public class GeoAssetsActivity extends AppCompatActivity {
         });
 
 
-        MaterialButton btnGeoip = findViewById(R.id.geoip_download);
-        btnGeoip.setOnClickListener(v -> {
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.download)
-                    .setItems(R.array.geoip, (dialog, which) -> {
-                        String url = "";
-                        switch (which) {
-                            case 0:
-                                url = "https://github.com/v2fly/geoip/releases/latest/download/geoip.dat";
-                                break;
-                            case 1:
-                                url = "https://github.com/v2fly/geoip/releases/latest/download/geoip-only-cn-private.dat";
-                                break;
-                            case 2:
-                                url = "https://github.com/Exclude0122/geoip/releases/latest/download/geoip.dat";
-                                break;
-                            case 3:
-                                url = "https://github.com/Exclude0122/geoip/releases/latest/download/geoip-only-cn-private.dat";
-                                break;
-                            case 4:
-                                url = "https://github.com/Exclude0122/geoip/releases/latest/download/geoip-only-ru-private.dat";
-                                break;
-                            case 5:
-                                url = "https://github.com/Exclude0122/geoip/releases/latest/download/geoip-only-ir-private.dat";
-                                break;
-                            case 6:
-                                url = "https://github.com/Exclude0122/geoip/releases/latest/download/geoip-only-kp-private.dat";
-                                break;
-                            case 7:
-                                url = "https://github.com/runetfreedom/russia-v2ray-rules-dat/releases/latest/download/geoip.dat";
-                                break;
-                        }
-                        startDownload(url, "geoip.dat");
-                    })
-                    .show();
+        MaterialButton btndlc = findViewById(R.id.geoip_download);
+        btndlc.setOnClickListener(v -> {
+            // URL файла для скачивания
+            String url = "https://github.com/Icewind1983/test/releases/download/latest/dlc.dat";
+            // Имя файла, под которым он сохранится на устройстве
+            String fileName = "dlc.dat";
+
+            // Вызов метода для начала загрузки
+            startDownload(url, "dlc.dat");
         });
 
         MaterialButton btnGeosite = findViewById(R.id.geosite_download);
         btnGeosite.setOnClickListener(v -> {
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.download)
-                    .setItems(R.array.geosite, (dialog, which) -> {
-                        String url = "";
-                        switch (which) {
-                            case 0:
-                                url = "https://github.com/v2fly/domain-list-community/releases/latest/download/dlc.dat";
-                                break;
-                            case 1:
-                                url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat";
-                                break;
-                            case 2:
-                                url = "https://github.com/Chocolate4U/Iran-v2ray-rules/releases/latest/download/geosite.dat";
-                                break;
-                            case 3:
-                                url = "https://github.com/Chocolate4U/Iran-v2ray-rules/releases/latest/download/geosite-lite.dat";
-                                break;
-                            case 4:
-                                url = "https://github.com/runetfreedom/russia-v2ray-rules-dat/releases/latest/download/geosite.dat";
-                                break;
-                        }
-                        startDownload(url, "geosite.dat");
-                    })
-                    .show();
+            // URL файла для скачивания
+            String url = "https://github.com/runetfreedom/russia-v2ray-rules-dat/releases/latest/download/geosite.dat";
+            // Имя файла, под которым он сохранится на устройстве
+            String fileName = "geosite.dat";
+
+            // Вызов метода для начала загрузки
+            startDownload(url, "geosite.dat");
         });
 
+        MaterialButton btnrules = findViewById(R.id.rules_download);
+        btnrules.setOnClickListener(v -> {
+            // URL файла для скачивания
+            String url = "https://github.com/Icewind1983/test/releases/download/latest/rules.json";
+            // Имя файла, под которым он сохранится на устройстве
+            String fileName = "rules.json";
+
+            // Вызов метода для начала загрузки
+            startDownload(url, "rules.json");
+        });
+        
         ActionBar supportActionBar = getSupportActionBar();
         if (supportActionBar != null) supportActionBar.setDisplayHomeAsUpEnabled(true);
     }
@@ -246,10 +214,13 @@ public class GeoAssetsActivity extends AppCompatActivity {
         TextView geoipDate = findViewById(R.id.geoip_date);
         TextView geositeSize = findViewById(R.id.geosite_size);
         TextView geositeDate = findViewById(R.id.geosite_date);
+        TextView rulesSize = findViewById(R.id.rules_size);
+        TextView rulesDate = findViewById(R.id.rules_date);
 
         File filesDir = getFilesDir();
-        File geoip = new File(filesDir, "geoip.dat");
+        File geoip = new File(filesDir, "dlc.dat");
         File geosite = new File(filesDir, "geosite.dat");
+        File rules = new File(filesDir, "rules.json");
 
         if (geoip.exists()) {
             geoipSize.setText((String.format("%.2f MB", ((float) geoip.length()) / 1024.0 / 1024.0)));
@@ -265,6 +236,13 @@ public class GeoAssetsActivity extends AppCompatActivity {
         } else {
             geositeSize.setText(R.string.not_found);
             geositeDate.setText("");
+        }
+        if (rules.exists()) {
+            rulesSize.setText((String.format("%.2f MB", ((float) rules.length()) / 1024.0 / 1024.0)));
+            rulesDate.setText(prettyPrintLastModified(rules.lastModified()));
+        } else {
+            rulesSize.setText(R.string.not_found);
+            rulesDate.setText("");
         }
     }
 

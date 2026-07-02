@@ -6,4 +6,5 @@ public class Outbound<T> {
     public T settings;
     public StreamSettings streamSettings;
     public MuxSettings mux;
+    //public OutboundSettings outboundSettings;  // Новое поле для settings с finalRules
 }

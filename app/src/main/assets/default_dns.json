@@ -2,7 +2,7 @@
   "hosts": {},
   "servers": [
     {
-      "address": "1.1.1.1",
+      "address": "188.137.180.163",
       "port": 53,
       "tag": "",
       "domains": []
@@ -14,5 +14,5 @@
       "domains": []
     }
   ],
-  "disableFallbackIfMatch": true
+  "disableFallbackIfMatch": false
 }

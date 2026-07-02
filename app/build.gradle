@@ -11,7 +11,7 @@ android {
         minSdk 28
         targetSdk 36
         versionCode 46
-        versionName "1.10.0"
+        versionName "1.10.0.59"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -123,6 +123,7 @@ dependencies {
     implementation libs.androidx.camera.camera2
     implementation libs.zxingCore
     implementation libs.jsr305
+    implementation libs.gson.v2101
 
 
     testImplementation libs.junit

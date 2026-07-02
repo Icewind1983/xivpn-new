@@ -47,16 +47,16 @@ public class Rules {
             Proxy proxy = AppDatabase.getInstance().proxyDao().find(rule.outboundLabel, rule.outboundSubscription);
             if (proxy == null) {
                 Log.d("Rules", "deleted outbound: " + rule.outboundLabel + " " + rule.outboundSubscription);
-                rule.outboundLabel = "No Proxy (Bypass Mode)";
+                rule.outboundLabel = "Direct";
                 rule.outboundSubscription = "none";
             }
         }
         writeRules(filesDir, rules);
 
-        String selectedLabel = sp.getString("SELECTED_LABEL", "No Proxy (Bypass Mode)");
+        String selectedLabel = sp.getString("SELECTED_LABEL", "Direct");
         String selectedSubscription = sp.getString("SELECTED_SUBSCRIPTION", "none");
         if (AppDatabase.getInstance().proxyDao().exists(selectedLabel, selectedSubscription) == 0) {
-            setCatchAll(sp, "No Proxy (Bypass Mode)", "none");
+            setCatchAll(sp, "Direct", "none");
         }
 
     }

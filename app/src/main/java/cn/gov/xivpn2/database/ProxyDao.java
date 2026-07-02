@@ -22,13 +22,13 @@ public abstract class ProxyDao {
     @Insert()
     public abstract void add(Proxy proxy);
 
-    @Query("INSERT OR IGNORE INTO proxy (label, protocol, subscription, config) VALUES ('No Proxy (Bypass Mode)', 'freedom', 'none', '{\"protocol\": \"freedom\"}')")
+    @Query("INSERT OR IGNORE INTO proxy (label, protocol, subscription, config) VALUES ('Direct', 'freedom', 'none', '{\"protocol\": \"freedom\"}')")
     public abstract void addFreedom();
 
     @Query("INSERT OR IGNORE INTO proxy (label, protocol, subscription, config) VALUES ('Block', 'blackhole', 'none', '{\"protocol\": \"blackhole\"}')")
     public abstract void addBlackhole();
 
-    @Query("INSERT OR IGNORE INTO proxy (label, protocol, subscription, config) VALUES ('Built-in DNS Server', 'dns', 'none', '{\"protocol\": \"dns\", \"settings\": {\"nonIPQuery\": \"drop\"}}')")
+    @Query("INSERT OR IGNORE INTO proxy (label, protocol, subscription, config) VALUES ('DNS', 'dns', 'none', '{\"protocol\": \"dns\", \"settings\": {\"nonIPQuery\": \"drop\"}}')")
     public abstract void addDNSOutbound();
 
     @Query("SELECT count(*) FROM proxy WHERE label = :label AND subscription = :subscription LIMIT 1")

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="leak_protection_modes">
+        <item>Отключено: приложения могут отправлять трафик через VPN-интерфейс</item>
+        <item>Блокировка: соединения с VPN-интерфейсом отклоняются</item>
+        <item>Прямое: соединения с VPN-интерфейсом обходят XiVPN</item>
+    </string-array>
+</resources>

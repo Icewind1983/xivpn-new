@@ -144,7 +144,7 @@ public class RuleActivity extends AppCompatActivity {
                 rule = new RoutingRule();
                 rule.label = "New Rule";
                 rule.outboundSubscription = "none";
-                rule.outboundLabel = "No Proxy (Bypass Mode)";
+                rule.outboundLabel = "Direct";
                 rule.domain = new ArrayList<>();
                 rule.ip = new ArrayList<>();
                 rule.port = "";
