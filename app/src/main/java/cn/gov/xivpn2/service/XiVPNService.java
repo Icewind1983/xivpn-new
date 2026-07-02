@@ -636,7 +636,7 @@ public class XiVPNService extends VpnService implements SocketProtect {
             Intent intent = new Intent(this, CrashLogActivity.class);
             intent.putExtra("FILE", "crash_" + datetime + ".txt");
 
-            Notification notification = new Notification.Builder(this, "XiVPNService").setContentTitle(getString(R.string.vpn_process_crashed)).setContentText(getString(R.string.click_to_open_crash_log)).setContentIntent(PendingIntent.getActivity(this, 21, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE)).setAutoCancel(true).setSmallIcon(R.drawable.baseline_vpn_key_24).build();
+            Notification notification = new Notification.Builder(this, "XiVPNService").setContentTitle(getString(R.string.vpn_process_crashed)).setContentText(getString(R.string.click_to_open_crash_log)).setSmallIcon(R.drawable.baseline_vpn_key_24).setContentIntent(PendingIntent.getActivity(this, 30, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE)).build();
             getSystemService(NotificationManager.class).notify(NotificationID.getID(), notification);
         }
     }
@@ -749,6 +749,31 @@ public class XiVPNService extends VpnService implements SocketProtect {
 
             // routing
             List<RoutingRule> rules = Rules.readRules(getFilesDir());
+
+            // IMPORTANT: Reorder rules to apply ad-blocking filters FIRST
+            // Separate ad-blocking rules (with outboundLabel = "Block") from other rules
+            List<RoutingRule> adBlockingRules = new ArrayList<>();
+            List<RoutingRule> otherRules = new ArrayList<>();
+
+            for (RoutingRule rule : rules) {
+                if (rule.outboundLabel != null && "Block".equals(rule.outboundLabel)) {
+                    // This is an ad-blocking rule
+                    adBlockingRules.add(rule);
+                    Log.d(TAG, "Ad-blocking rule found: " + rule.label);
+                } else {
+                    otherRules.add(rule);
+                }
+            }
+
+            // Rebuild rules list: ad-blocking rules FIRST, then all other rules
+            // This ensures DNS queries are filtered against ad-blocking rules before other routing
+            rules.clear();
+            rules.addAll(adBlockingRules);
+            rules.addAll(otherRules);
+
+            Log.d(TAG, "Total routing rules: " + rules.size() + 
+                    " (Ad-blocking: " + adBlockingRules.size() + 
+                    ", Other: " + otherRules.size() + ")");
 
             config.routing = new Routing();
             config.routing.rules = rules;
